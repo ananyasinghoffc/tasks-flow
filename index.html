@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow Lite — Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/utilities.css">
+</head>
+<body>
+  <div class="theme-toggle-wrap">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark">
+      <span class="theme-toggle__icon" aria-hidden="true">◐</span>
+    </button>
+  </div>
+
+  <main class="ledger">
+    <header class="ledger__header">
+      <div class="ledger__mark" aria-hidden="true">TF</div>
+      <div class="ledger__titles">
+        <h1 class="ledger__title">TaskFlow <span>Lite</span></h1>
+        <p class="ledger__subtitle">Your client-side task management solution</p>
+      </div>
+      <div class="ledger__tally" id="tally" aria-live="polite">
+        <span class="tally__num" id="tally-open">0</span>
+        <span class="tally__label">open</span>
+      </div>
+    </header>
+
+    <section class="entry-panel">
+      <form id="task-form" class="entry-form" novalidate>
+        <label for="task-input" class="sr-only">New entry</label>
+        <input
+          id="task-input"
+          name="task-input"
+          type="text"
+          class="entry-input"
+          placeholder="Log a new task…"
+          maxlength="120"
+          autocomplete="off"
+        >
+        <button type="submit" class="entry-submit">Add entry</button>
+      </form>
+      <p id="form-error" class="entry-error" role="alert" aria-live="assertive"></p>
+    </section>
+
+    <nav class="filter-bar" aria-label="Filter tasks">
+      <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+      <button class="filter-btn" data-filter="active" type="button">Active</button>
+      <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+      <button class="filter-btn filter-btn--danger" id="clear-completed" type="button">Clear completed</button>
+    </nav>
+
+    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+    <footer class="ledger__footer">
+      <span id="footer-count">0 entries</span>
+      <span class="ledger__footer-dot">·</span>
+      <span>stored locally in this browser</span>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
